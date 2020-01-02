@@ -8,16 +8,19 @@ install:
   - sudo dpkg -i ${pandoc_deb}
   - rm ${pandoc_deb}
 
-  # texlife
-  - PROJECTDIR=$(pwd)
-  - cd /tmp && wget mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
-  - tar -xvzf install-tl-unx.tar.gz
-  - cd install-tl-*
-  - chmod +x install-tl
-  - sudo ./install-tl --profile=$PROJECTDIR/texlive.profile
-  - PATH=/usr/local/texlive/2019/bin/x86_64-linux:$PATH
-  - pdflatex -v
-  - cd $PROJECTDIR
+  # default textlife from apt-get is too old (2017)
+  # install the latest texlife version manually
+  - REMOTE="http://mirror.ctan.org/systems/texlive/tlnet"
+  - INSTALL="/tmp/install-texlive"
+  - mkdir -p $INSTALL
+  - curl -sSL $REMOTE/install-tl-unx.tar.gz | tar -xzv -C $INSTALL --strip-components=1
+
+  - sudo $INSTALL/install-tl -profile .tl.profile
+
+  - VERSION=$($INSTALL/install-tl --version | grep 'version' | grep -o '[0-9]\{4\}')
+  - PLATFORM=$($INSTALL/install-tl --print-platform)
+  - TEXBIN="/usr/local/texlive/${VERSION}/bin/${PLATFORM}"
+  - export "PATH=$TEXBIN:$PATH"
 
   # Initialization and packages for tlmgr
   - sudo apt-get install xzdec
