@@ -17,7 +17,12 @@ before_install:
   - sudo $INSTALL/install-tl -no-gui -profile .texlife.profile
   - VERSION=$($INSTALL/install-tl --version | grep 'version' | grep -o '[0-9]\{4\}')
   - PLATFORM=$($INSTALL/install-tl --print-platform)
+  - TEXLIVE_DIR="/usr/local/texlive/${VERSION}"
   - TEXBIN="/usr/local/texlive/${VERSION}/bin/${PLATFORM}"
+  - echo "Texlive Version: $VERSION"
+  - echo "Texlive latform: $PLATFORM"
+  - echo "Texlive Directory: $TEXLIVE_DIR"
+  - echo "Texlive bin Directory: $TEXBIN"
   - export "PATH=$TEXBIN:$PATH"
 
   # initialization for tlmgr
@@ -38,7 +43,7 @@ before_install:
   # packages specified in the template
   #- sudo $(which tlmgr) install adjustbox afterpage amsmath amssymb babel background beamerarticle bidi bookmark booktabs caption csquotes etoolbox fancyhdr fancyvrb float fontenc footmisc footnote footnotebackref footnotehyper fvextra geometry graphicx grffile hyperref ifluatex ifxetex inputenc listings lmodern longtable luatexja-fontspec luatexja-preset mathspec mdframed microtype natbib pagecolor parskip pgfpages polyglossia setspace sourcecodepro sourcesanspro textcomp tikz titling ulem unicode-math upquote url xcolor xeCJK xurl
 
-  - sudo chown -hR $(whoami) /usr/local/texlive/20xx
+  - sudo chown -hR $(whoami) "$TEXLIVE_DIR"
   # packages specified in the template
   - tlmgr install adjustbox background bidi csquotes footmisc footnotebackref fvextra mdframed pagecolor sourcecodepro sourcesanspro titling ulem upquote xurl
 
