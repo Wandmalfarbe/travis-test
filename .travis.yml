@@ -19,10 +19,10 @@ before_install:
   - PLATFORM=$($INSTALL/install-tl --print-platform)
   - TEXLIVE_DIR="/usr/local/texlive/${VERSION}"
   - TEXBIN="/usr/local/texlive/${VERSION}/bin/${PLATFORM}"
-  - echo "Texlive Version: $VERSION"
-  - echo "Texlive latform: $PLATFORM"
-  - echo "Texlive Directory: $TEXLIVE_DIR"
-  - echo "Texlive bin Directory: $TEXBIN"
+  - echo "Texlive Version $VERSION"
+  - echo "Texlive Platform $PLATFORM"
+  - echo "Texlive Directory $TEXLIVE_DIR"
+  - echo "Texlive bin Directory $TEXBIN"
   - export "PATH=$TEXBIN:$PATH"
 
   # initialization for tlmgr
