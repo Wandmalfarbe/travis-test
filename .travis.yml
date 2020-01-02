@@ -49,10 +49,9 @@ before_install:
 
   # packages only needed for some examples (that include packages via header-includes)
   - sudo $(which tlmgr) install awesomebox fontawesome5
-before_script:
-  - cd examples
 script:
   - python3 texliveonfly.py document.tex
+  - cd examples
   - sh build-examples.sh
   - cd "../test/"
   - mvn clean verify
