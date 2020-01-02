@@ -15,7 +15,7 @@ install:
   - mkdir -p $INSTALL
   - curl -sSL $REMOTE/install-tl-unx.tar.gz | tar -xzv -C $INSTALL --strip-components=1
 
-  - sudo $INSTALL/install-tl -profile .tl.profile
+  - sudo $INSTALL/install-tl -no-gui
 
   - VERSION=$($INSTALL/install-tl --version | grep 'version' | grep -o '[0-9]\{4\}')
   - PLATFORM=$($INSTALL/install-tl --print-platform)
