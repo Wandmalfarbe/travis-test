@@ -23,7 +23,6 @@ install:
   # Initialization and packages for tlmgr
   - sudo apt-get install xzdec
   - tlmgr init-usertree
-  - sh update-tlmgr-latest.sh
 
   # for rendering the PDFs
   - sudo apt-get install poppler-utils
