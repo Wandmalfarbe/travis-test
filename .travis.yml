@@ -1,14 +1,14 @@
 os: linux
 dist: bionic
 language: java
-install:
-  # debian-supplied pandoc is very old --> install manually
+before_install:
+  # default pandoc is too old -> install a newer version manually
   - pandoc_deb="pandoc-2.9.1-1-amd64.deb"
   - wget "https://github.com/jgm/pandoc/releases/download/2.9.1/${pandoc_deb}"
   - sudo dpkg -i ${pandoc_deb}
   - rm ${pandoc_deb}
 
-  # default textlife from apt-get is too old (2017)
+  # default textlife from apt-get is too old
   # install the latest texlife version manually
   - REMOTE="http://mirror.ctan.org/systems/texlive/tlnet"
   - INSTALL="/tmp/install-texlive"
@@ -20,14 +20,14 @@ install:
   - TEXBIN="/usr/local/texlive/${VERSION}/bin/${PLATFORM}"
   - export "PATH=$TEXBIN:$PATH"
 
-  # Initialization and packages for tlmgr
+  # initialization for tlmgr
   - sudo apt-get install xzdec
   - tlmgr init-usertree
 
-  # for rendering the PDFs
+  # install pdftoppm for rendering the PDFs
   - sudo apt-get install poppler-utils
 
-  # for executing python based pandoc filters
+  # for executing python based pandoc filters install python and pip
   - sudo apt-get install python3
   - sudo apt-get install python3-pip
   - sudo pip3 install --upgrade setuptools
