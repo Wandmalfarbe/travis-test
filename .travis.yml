@@ -10,6 +10,9 @@ install:
 
   # texlife
   - sudo apt-get --no-install-recommends install texlive-base
+
+  # Initialization and packages for tlmgr
+  - sudo apt-get install xzdec
   - tlmgr init-usertree
 
   # for rendering the PDFs
