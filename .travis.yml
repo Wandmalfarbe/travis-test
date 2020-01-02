@@ -9,7 +9,15 @@ install:
   - rm ${pandoc_deb}
 
   # texlife
-  - sudo apt-get --no-install-recommends install texlive-base
+  - PROJECTDIR=$(pwd)
+  - cd /tmp && wget mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz
+  - tar -xvzf install-tl-unx.tar.gz
+  - cd install-tl-*
+  - chmod +x install-tl
+  - sudo ./install-tl --profile=$PROJECTDIR/texlive.profile
+  - PATH=/usr/local/texlive/2019/bin/x86_64-linux:$PATH
+  - pdflatex -v
+  - cd $PROJECTDIR
 
   # Initialization and packages for tlmgr
   - sudo apt-get install xzdec
