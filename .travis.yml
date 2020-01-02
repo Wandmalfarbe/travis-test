@@ -36,10 +36,10 @@ install:
   - pip3 install pandoc-latex-environment
 
   # packages needed for the template
-  - tlmgr install xecjk filehook unicode-math ucharcat pagecolor babel-german ly1 mweights sourcecodepro sourcesanspro mdframed needspace fvextra footmisc footnotebackref background
+  - sudo tlmgr install xecjk filehook unicode-math ucharcat pagecolor babel-german ly1 mweights sourcecodepro sourcesanspro mdframed needspace fvextra footmisc footnotebackref background
 
   # packages only needed for some examples (that include packages via header-includes)
-  - tlmgr install awesomebox fontawesome5
+  - sudo tlmgr install awesomebox fontawesome5
 before_script:
   - cd examples
 script:
