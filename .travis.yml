@@ -23,6 +23,7 @@ before_install:
   # initialization for tlmgr
   - sudo apt-get install xzdec
   - tlmgr init-usertree
+  - tlmgr update --self
 
   # install pdftoppm for rendering the PDFs
   - sudo apt-get install poppler-utils
@@ -34,6 +35,9 @@ before_install:
 
   # install python filters
   - pip3 install pandoc-latex-environment
+
+  # packages specified in the template
+  - sudo $(which tlmgr) install adjustbox afterpage amsmath amssymb babel background beamerarticle bidi bookmark booktabs caption csquotes etoolbox fancyhdr fancyvrb float fontenc footmisc footnote footnotebackref footnotehyper fvextra geometry graphicx grffile hyperref ifluatex ifxetex inputenc listings lmodern longtable luatexja-fontspec luatexja-preset mathspec mdframed microtype natbib pagecolor parskip pgfpages polyglossia setspace sourcecodepro sourcesanspro textcomp tikz titling ulem unicode-math upquote url xcolor xeCJK xurl
 
   # packages needed for the template
   - sudo $(which tlmgr) install xecjk filehook unicode-math ucharcat pagecolor babel-german ly1 mweights sourcecodepro sourcesanspro mdframed needspace fvextra footmisc footnotebackref background
