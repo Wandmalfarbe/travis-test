@@ -14,9 +14,7 @@ install:
   - INSTALL="/tmp/install-texlive"
   - mkdir -p $INSTALL
   - curl -sSL $REMOTE/install-tl-unx.tar.gz | tar -xzv -C $INSTALL --strip-components=1
-
-  - sudo $INSTALL/install-tl -no-gui
-
+  - sudo $INSTALL/install-tl -no-gui -profile .tl.profile
   - VERSION=$($INSTALL/install-tl --version | grep 'version' | grep -o '[0-9]\{4\}')
   - PLATFORM=$($INSTALL/install-tl --print-platform)
   - TEXBIN="/usr/local/texlive/${VERSION}/bin/${PLATFORM}"
