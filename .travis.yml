@@ -52,6 +52,7 @@ before_install:
 before_script:
   - cd examples
 script:
+  - python3 texliveonfly.py document.tex
   - sh build-examples.sh
   - cd "../test/"
   - mvn clean verify
