@@ -6,6 +6,7 @@ TEXMFLOCAL /tmp/texlive/texmf-local
 TEXMFSYSCONFIG /tmp/texlive/texmf-config
 TEXMFSYSVAR /tmp/texlive/texmf-var
 TEXMFVAR ~/.texlive/texmf-var
+instopt_adjustpath 1
 collection-basic 1
 collection-bibtexextra 0
 collection-fontsextra 0
