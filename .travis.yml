@@ -10,6 +10,7 @@ install:
 
   # texlife
   - sudo apt-get --no-install-recommends install texlive-base
+  - tlmgr init-usertree
 
   # for rendering the PDFs
   - sudo apt-get install poppler-utils
