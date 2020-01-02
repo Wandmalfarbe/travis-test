@@ -39,7 +39,8 @@ before_install:
   #- sudo $(which tlmgr) install adjustbox afterpage amsmath amssymb babel background beamerarticle bidi bookmark booktabs caption csquotes etoolbox fancyhdr fancyvrb float fontenc footmisc footnote footnotebackref footnotehyper fvextra geometry graphicx grffile hyperref ifluatex ifxetex inputenc listings lmodern longtable luatexja-fontspec luatexja-preset mathspec mdframed microtype natbib pagecolor parskip pgfpages polyglossia setspace sourcecodepro sourcesanspro textcomp tikz titling ulem unicode-math upquote url xcolor xeCJK xurl
 
   # packages specified in the template
-  - sudo $(which tlmgr) install adjustbox afterpage amssymb background beamerarticle bidi csquotes fontenc footmisc footnote footnotebackref fvextra graphicx ifluatex ifxetex inputenc lmodern longtable luatexja-fontspec luatexja-preset mdframed pagecolor polyglossia sourcecodepro sourcesanspro textcomp tikz titling ulem upquote xeCJK xurl
+  #- sudo $(which tlmgr) install adjustbox afterpage amssymb background beamerarticle bidi csquotes fontenc footmisc footnote footnotebackref fvextra graphicx ifluatex ifxetex inputenc lmodern longtable luatexja-fontspec luatexja-preset mdframed pagecolor polyglossia sourcecodepro sourcesanspro textcomp tikz titling ulem upquote xeCJK xurl
+  - sudo $(which tlmgr) install adjustbox afterpage amssymb
 
   # packages needed for the template
   - sudo $(which tlmgr) install xecjk filehook unicode-math ucharcat pagecolor babel-german ly1 mweights sourcecodepro sourcesanspro mdframed needspace fvextra footmisc footnotebackref background
