@@ -44,3 +44,5 @@ before_script:
   - cd examples
 script:
   - sh build-examples.sh
+  - cd "../test/"
+  - mvn clean verify
