@@ -61,6 +61,32 @@ class Titlepage {
     }
 
     @Test
+    void titlepageBackground() throws IOException, InterruptedException {
+
+        // Arrange
+        String expectedPart =
+                "\\tikz[remember picture,overlay] \\node[inner sep=0pt] at (current page.center){\\includegraphics[width=\\paperwidth,height=\\paperheight]{image.pdf}};";
+        String expectedDifferentLayout =
+                "% The titlepage with a background image has other text spacing and text size\n"
+                        + "{\n"
+                        + "  \\setstretch{2}\n"
+                        + "  \\vfill\n"
+                        + "  \\vskip -8em\n"
+                        + "  \\noindent {\\huge \\textbf{\\textsf{Test Titlepage}}}\n"
+                        + "    \\vskip 2em\n"
+                        + "  \\noindent {\\Large \\textsf{Author} \\vskip 0.6em \\textsf{2020-01-11}}\n"
+                        + "  \\vfill\n"
+                        + "}";
+
+        // Act
+        String actual = PandocUtil.runPandoc("titlepage-background", workingDir);
+
+        // Assert
+        assertThat(actual, containsString(expectedPart));
+        assertThat(actual, containsString(expectedDifferentLayout));
+    }
+
+    @Test
     void titlepageColor() throws IOException, InterruptedException {
 
         // Arrange
@@ -69,19 +95,6 @@ class Titlepage {
 
         // Act
         String actual = PandocUtil.runPandoc("titlepage-color", workingDir);
-
-        // Assert
-        assertThat(actual, containsString(expectedPart));
-    }
-
-    @Test
-    void titlepageTextColor() throws IOException, InterruptedException {
-
-        // Arrange
-        String expectedPart = "\\color[HTML]{FF3D24}";
-
-        // Act
-        String actual = PandocUtil.runPandoc("titlepage-text-color", workingDir);
 
         // Assert
         assertThat(actual, containsString(expectedPart));
@@ -120,27 +133,15 @@ class Titlepage {
     }
 
     @Test
-    void titlepageBackground() throws IOException, InterruptedException {
+    void titlepageTextColor() throws IOException, InterruptedException {
 
         // Arrange
-        String expectedPart =
-                "\\tikz[remember picture,overlay] \\node[inner sep=0pt] at (current page.center){\\includegraphics[width=\\paperwidth,height=\\paperheight]{image.pdf}};";
-        String expectedDifferentLayout = "% The titlepage with a background image has other text spacing and text size\n"
-                + "{\n"
-                + "  \\setstretch{2}\n"
-                + "  \\vfill\n"
-                + "  \\vskip -8em\n"
-                + "  \\noindent {\\huge \\textbf{\\textsf{Test Titlepage}}}\n"
-                + "    \\vskip 2em\n"
-                + "  \\noindent {\\Large \\textsf{Author} \\vskip 0.6em \\textsf{2020-01-11}}\n"
-                + "  \\vfill\n"
-                + "}";
+        String expectedPart = "\\color[HTML]{FF3D24}";
 
         // Act
-        String actual = PandocUtil.runPandoc("titlepage-background", workingDir);
+        String actual = PandocUtil.runPandoc("titlepage-text-color", workingDir);
 
         // Assert
         assertThat(actual, containsString(expectedPart));
-        assertThat(actual, containsString(expectedDifferentLayout));
     }
 }

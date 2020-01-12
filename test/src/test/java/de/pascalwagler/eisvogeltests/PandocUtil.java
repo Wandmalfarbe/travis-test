@@ -27,20 +27,28 @@ public class PandocUtil {
      */
     public static String runPandoc(String testFile, Path workingDir)
             throws IOException, InterruptedException {
+        return runPandoc(testFile, renderTestFileCommand, workingDir);
+    }
+
+    /**
+     * Compiles the given test file with pandoc and returns the generated LaTeX output.
+     */
+    public static String runPandoc(String testFile, String[] commandArray, Path workingDir)
+            throws IOException, InterruptedException {
 
         if (pandocLocation == null) {
             pandocLocation = executeCommand(locatePandocCommand, new File(".").toPath()).trim();
         }
         String absolutePath = Paths.get("src/test/resources/").toAbsolutePath().toString();
 
-        renderTestFileCommand[0] = pandocLocation;
-        renderTestFileCommand[1] = absolutePath + "/" + testFile + ".md";
-        renderTestFileCommand[3] = workingDir.toAbsolutePath() + "/"
+        commandArray[0] = pandocLocation;
+        commandArray[1] = absolutePath + "/" + testFile + ".md";
+        commandArray[3] = workingDir.toAbsolutePath() + "/"
                 + testFile + "-actual.tex";
-        renderTestFileCommand[9] = absolutePath + "/eisvogel.tex";
-        String destinationFile = renderTestFileCommand[3];
+        commandArray[9] = absolutePath + "/eisvogel.tex";
+        String destinationFile = commandArray[3];
 
-        executeCommand(renderTestFileCommand, workingDir);
+        executeCommand(commandArray, workingDir);
 
 
         return Files.readString(Paths.get(destinationFile));
