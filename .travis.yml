@@ -3,8 +3,9 @@ dist: bionic
 language: java
 before_install:
   # default pandoc is too old -> install a newer version manually
-  - pandoc_deb="pandoc-2.9.1-1-amd64.deb"
-  - wget "https://github.com/jgm/pandoc/releases/download/2.9.1/${pandoc_deb}"
+  - PANDOC_VERSION="2.9.2"
+  - pandoc_deb="pandoc-${PANDOC_VERSION}-1-amd64.deb"
+  - wget "https://github.com/jgm/pandoc/releases/download/${PANDOC_VERSION}/${pandoc_deb}"
   - sudo dpkg -i ${pandoc_deb}
   - rm ${pandoc_deb}
 
@@ -53,7 +54,6 @@ before_install:
   # packages only needed for some examples (that include packages via header-includes)
   - tlmgr install awesomebox fontawesome5
 script:
-  #- python3 texliveonfly.py document.tex
   - cd examples
   - sh build-examples.sh
   - cd "../test/"
