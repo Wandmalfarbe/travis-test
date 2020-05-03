@@ -32,6 +32,7 @@ before_install:
   - sudo apt-get install python3
   - sudo apt-get install python3-pip
   - sudo pip3 install --upgrade setuptools
+  - sudo pip3 install wheel
 
   # install python filters
   - pip3 install pandoc-latex-environment
@@ -52,7 +53,7 @@ before_install:
   # packages only needed for some examples (that include packages via header-includes)
   - tlmgr install awesomebox fontawesome5
 script:
-  - python3 texliveonfly.py document.tex
+  #- python3 texliveonfly.py document.tex
   - cd examples
   - sh build-examples.sh
   - cd "../test/"
